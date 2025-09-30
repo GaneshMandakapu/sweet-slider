@@ -159,7 +159,6 @@ const Hero = () => {
 
 
       <div className="hero-content">
-        {/* Dynamic Text */}
         <div className="hero-text">
           <motion.h1
             key={cakes[activeIndex].title}
@@ -181,7 +180,6 @@ const Hero = () => {
           </motion.p>
         </div>
 
-        {/* Circular Slider */}
         <div className="circular-slider">
           <div className="circle outer-circle">
             <div className="circle inner-circle">
@@ -221,7 +219,6 @@ const Hero = () => {
             </svg>
           </div>
 
-          {/* Arrows */}
           <button className="arrow left"  onClick={() => move('left')}>←</button>
           <button className="arrow right"  onClick={() => move('right')} >→</button>
         </div>

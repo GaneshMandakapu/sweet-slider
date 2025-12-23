@@ -4,6 +4,7 @@ import './Navbar.css'
 const Navbar = () => {
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showOrderModal, setShowOrderModal] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })
   const [orderForm, setOrderForm] = useState({
     name: '',
@@ -34,6 +35,7 @@ const Navbar = () => {
     const element = document.getElementById(section)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      setMobileMenuOpen(false) // Close mobile menu after clicking
     } else {
       alert(`${section} section coming soon!`)
     }
@@ -43,15 +45,37 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="logo">Chikkibhoii Bakes</div>
-        <ul className="nav-links">
+        
+        {/* Hamburger Menu Button */}
+        <button 
+          className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul className={`nav-links ${mobileMenuOpen ? 'mobile-active' : ''}`}>
           <li onClick={() => scrollToSection('home')}>Home</li>
           <li onClick={() => scrollToSection('menu')}>Menu</li>
           <li onClick={() => scrollToSection('about')}>About</li>
           <li onClick={() => scrollToSection('contact')}>Contact</li>
+          <li className="mobile-login" onClick={() => { setShowLoginModal(true); setMobileMenuOpen(false); }}>
+            <span className="login-icon">👤</span> Login
+          </li>
         </ul>
         <div className="cta-buttons">
-          <button className="btn outline" onClick={() => setShowLoginModal(true)}>Login</button>
-          <button className="btn filled" onClick={() => setShowOrderModal(true)}>Order Now</button>
+          <button 
+            className="btn user-icon" 
+            onClick={() => setShowLoginModal(true)}
+            aria-label="Login"
+            title="Login"
+          >
+            👤
+          </button>
+          <button className="btn filled" onClick={() => { setShowOrderModal(true); setMobileMenuOpen(false); }}>Order Now</button>
         </div>
       </nav>
 

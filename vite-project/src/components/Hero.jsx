@@ -279,15 +279,15 @@ const Hero = () => {
           </div>
 
           <div className="circle-text">
-            <svg viewBox="0 0 1100 1200" width="100%" height="100%">
+            <svg viewBox="0 0 1000 1000" width="100%" height="100%">
               <defs>
                 <path
                   id="circlePath"
-                  d="M600,600 m-550,0 a500,500 0 1,1 1000,0 a500,500 0 1,1 -1000,0"
+                  d="M500,500 m-500,0 a500,500 0 1,1 1000,0 a500,500 0 1,1 -1000,0"
                 />
               </defs>
-              <text fill="white" fontSize="24" letterSpacing="8">
-                <textPath href="#circlePath" startOffset="50%">
+              <text fill="white" fontSize="19" letterSpacing="8">
+                <textPath href="#circlePath" startOffset="50%" textAnchor="middle">
                   {cakes.map((cake) => ` • ${cake.name.toUpperCase()} `).join("")}
                 </textPath>
               </text>

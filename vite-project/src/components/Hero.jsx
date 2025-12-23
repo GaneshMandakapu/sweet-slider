@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import "./Hero.css";
 
@@ -92,6 +92,10 @@ const Hero = () => {
   const [stepIndex, setStepIndex] = useState(0);
   const [rotation, setRotation]   = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const heroRef = useRef(null);
 
   const radius = 500;
   const offset = 80 / radius;                     
@@ -110,9 +114,79 @@ const Hero = () => {
     }, 300);
   };
 
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      move("right");
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, activeIndex]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        move("left");
+        setIsAutoPlaying(false); // Pause auto-play on manual interaction
+      } else if (e.key === "ArrowRight") {
+        move("right");
+        setIsAutoPlaying(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Touch/Swipe support
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      move("right");
+      setIsAutoPlaying(false);
+    }
+    if (isRightSwipe) {
+      move("left");
+      setIsAutoPlaying(false);
+    }
+
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
+  const handleMouseEnter = () => {
+    setIsAutoPlaying(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsAutoPlaying(true);
+  };
+
   return (
     <div 
  className="hero"
+ ref={heroRef}
+ onTouchStart={handleTouchStart}
+ onTouchMove={handleTouchMove}
+ onTouchEnd={handleTouchEnd}
+ onMouseEnter={handleMouseEnter}
+ onMouseLeave={handleMouseLeave}
   >
        <motion.div
     className="hero-bg"
@@ -222,6 +296,34 @@ const Hero = () => {
           <button className="arrow left"  onClick={() => move('left')}>←</button>
           <button className="arrow right"  onClick={() => move('right')} >→</button>
         </div>
+
+        {/* Active Indicators */}
+        <div className="indicators">
+          {cakes.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === activeIndex ? 'active' : ''}`}
+              onClick={() => {
+                const direction = index > activeIndex ? "right" : "left";
+                const steps = Math.abs(index - activeIndex);
+                for (let i = 0; i < steps; i++) {
+                  setTimeout(() => move(direction), i * 100);
+                }
+                setIsAutoPlaying(false);
+              }}
+              aria-label={`Go to ${cakes[index].name} cake`}
+            />
+          ))}
+        </div>
+
+        {/* Auto-play control */}
+        <button 
+          className="autoplay-toggle"
+          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+          aria-label={isAutoPlaying ? "Pause auto-play" : "Resume auto-play"}
+        >
+          {isAutoPlaying ? "⏸" : "▶"}
+        </button>
       </div>
       
     </div>

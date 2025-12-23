@@ -9,7 +9,9 @@
   align-items: center;
   justify-content:center;
   gap: 300px;
-
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   font-family: 'Playfair Display', serif;
   z-index: 1000;
 }
@@ -17,7 +19,8 @@
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #222;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links {
@@ -29,11 +32,14 @@
 .nav-links li {
   cursor: pointer;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links li:hover {
-  color: #c79a3b; 
+  color: #ffd700; 
+  transform: translateY(-2px);
 }
 
 .cta-buttons {
@@ -51,22 +57,26 @@
 }
 
 .btn.outline {
-  border: 1px solid #222;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   background: transparent;
-  color: #222;
+  color: #fff;
 }
 
 .btn.outline:hover {
-  background: #222;
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
+  border-color: #fff;
 }
 
 .btn.filled {
-  background: #c79a3b;
+  background: rgba(255, 215, 0, 0.9);
   border: none;
-  color: #fff;
+  color: #000;
+  font-weight: 600;
 }
 
 .btn.filled:hover {
-  background: #a67c28;
+  background: rgba(255, 215, 0, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

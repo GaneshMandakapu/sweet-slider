@@ -181,6 +181,7 @@ const Hero = () => {
   return (
     <div 
  className="hero"
+ id="home"
  ref={heroRef}
  onTouchStart={handleTouchStart}
  onTouchMove={handleTouchMove}

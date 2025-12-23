@@ -1,6 +1,6 @@
 # 🍰 Sweet Slider - Interactive Cake Gallery
 
-A beautiful, interactive circular slider showcasing delicious cakes with smooth animations powered by Framer Motion.
+A beautiful, interactive circular slider showcasing delicious cakes from **Chikkibhoii Bakes** with smooth animations powered by Framer Motion.
 
 ![React](https://img.shields.io/badge/React-19.1.1-blue)
 ![Vite](https://img.shields.io/badge/Vite-7.1.2-purple)
@@ -8,14 +8,20 @@ A beautiful, interactive circular slider showcasing delicious cakes with smooth 
 
 ## ✨ Features
 
-- 🎠 **Circular Carousel** - Unique circular slider design with rotating cake images
+### 🎠 Interactive Slider
+- **Circular Carousel** - Unique circular slider design with rotating cake images
 - 🎨 **Dynamic Backgrounds** - Background colors transition smoothly with each cake
 - ⚡ **Auto-play** - Automatic rotation through cakes (pause on hover)
 - ⌨️ **Keyboard Navigation** - Use arrow keys to navigate left/right
 - 📱 **Touch/Swipe Support** - Mobile-friendly swipe gestures
 - 🎯 **Active Indicators** - Dots showing current position with click navigation
 - 🪄 **Smooth Animations** - Powered by Framer Motion for silky transitions
+
+### 🔐 Functional Navbar
 - 🔝 **Glass Navbar** - Modern glassmorphism effect on navigation bar
+- 🔑 **Login Modal** - Beautiful login form with email/password
+- 🛒 **Order Modal** - Complete order form with cake selection
+- 🧭 **Navigation Links** - Working navigation to different sections
 - 💫 **Hover Effects** - Interactive elements with smooth hover states
 
 ## 🚀 Quick Start
@@ -138,10 +144,10 @@ This project is open source and available under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- Original design inspiration from DvBakes
+- Chikkibhoii Bakes for the delicious inspiration
 - Framer Motion for amazing animation capabilities
 - React and Vite communities for excellent tools
 
 ---
 
-Made with ❤️ and 🍰
+Made with ❤️ and 🍰 by Chikkibhoii Bakes

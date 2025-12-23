@@ -192,7 +192,7 @@ const Hero = () => {
        <motion.div
     className="hero-bg"
     animate={{ background: cakes[activeIndex].background }}
-    transition={{ duration: 1, ease: "easeInOut" }}
+    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
   />
 <motion.img
   key={cakes[activeIndex].leftImg}
@@ -209,7 +209,7 @@ const Hero = () => {
   initial={{ top: "-200px", opacity: 0 }}
   animate={{ top: cakes[activeIndex].leftStyle.top, opacity: 0.5 }}
   exit={{ top: "-200px", opacity: 0 }}
-  transition={{ duration: 0.6, ease: "easeOut" }}
+  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
 />
 
 <motion.img
@@ -227,7 +227,7 @@ const Hero = () => {
   initial={{ top: "-200px", opacity: 0 }}
   animate={{ top: cakes[activeIndex].rightStyle.top, opacity: 0.5 }}
   exit={{ top: "-200px", opacity: 0 }}
-  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
 />
 
 
@@ -237,19 +237,19 @@ const Hero = () => {
         <div className="hero-text">
           <motion.h1
             key={cakes[activeIndex].title}
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             {cakes[activeIndex].title}
           </motion.h1>
           <motion.p
             key={cakes[activeIndex].description}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
             {cakes[activeIndex].description}
           </motion.p>
@@ -261,7 +261,7 @@ const Hero = () => {
               <motion.div
                 className="center-image"
                 animate={{ rotate: rotation }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               >
                 <img
                   src={cakes[activeIndex].img}
